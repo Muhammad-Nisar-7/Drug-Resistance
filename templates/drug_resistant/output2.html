@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data </title>
+
+    <style>
+       table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        border: 1px solid #dddddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+    </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.23.0/cytoscape.min.js" integrity="sha512-gEWKnYYa1/1c3jOuT9PR7NxiVI1bwn02DeJGsl+lMVQ1fWMNvtjkjxIApTdbJ/wcDjQmbf+McWahXwipdC9bGA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link href="/static/lncrna/styles.css" rel="stylesheet"/>
+</head>
+
+<body >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<a class="navbar-brand" href="{% url 'drug_resistant:profile' %}"> <h1>HNCDrugResDb</h1></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
+
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'drug_resistant:home0' %}">HOME </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'drug_resistant:bin' %}">BROWSE </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'drug_resistant:home2' %}">BATCH QUERY</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'drug_resistant:qsearch' %}">QUICK SEARCH </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'drug_resistant:home' %}">ANALYZE </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'drug_resistant:pw' %}">PATHWAY EXPLORER </a>
+    </li>
+    
+    
+    <li class="nav-item">
+      <a class="nav-link " href="{% url 'drug_resistant:faqs' %}" >FAQs</a>
+    </li>
+        <li class="nav-item">
+      <a class="nav-link " href="{% url 'drug_resistant:contact' %}" >Contact Us</a>
+    </li>
+
+  </ul>
+  
+</div>
+</nav>
+
+
+
+    <!--Solution no 1.a-->
+
+    <table id="data-table" border=1 cellpadding=7 style="border-collapse:collapse; text-align:center">
+        
+
+        <tr>
+            <th>Name</th>
+            <th>Drug</th>
+            <th>Cell Line Origin</th>
+            <th>Control Cell Line</th>
+            <th>Resistant Cell Line</th>
+            <th>Molecules</th>
+            <th>Gene ID</th>
+            <th>Expression in resistant cell</th>
+            <th>Post-translational modification(s)</th>
+            <th>Driver molecule of Drug resistance (Validated)</th>
+            <th>Experimental method</th>
+            <th>Fold Ratio</th>
+            <th>Biomarker Type</th>
+            <th>PMID Marker</th>
+            <th>PubMed ID</th>
+
+
+
+        </tr>
+        
+        {% for mol in data %}
+        <tr>
+            <td>{{ mol.name }}</td>
+            <td>{{ mol.drug }}</td>
+            <td>{{ mol.cell_lo }}</td>
+            <td>{{ mol.control_cl }}</td>
+            <td>{{ mol.resistant_cl }}</td>
+            <td>{{ mol.molecules }}</td>
+            <td>{{ mol.gene_id }}</td>
+            <td>{{ mol.exp_inRes_cell }}</td>
+            <td>{{ mol.post_tm }}</td>
+            <td>{{ mol.driver_molecule }}</td>
+            <td>{{ mol.exp_method }}</td>
+            <td>{{ mol.fold_ratio }}</td>
+            <td>{{ mol.biomarker_type }}</td>
+            <td>{{ mol.pmid_marker }}</td>
+            <td>{{ mol.pubMed }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+
+<script>
+  window.addEventListener("DOMContentLoaded", function() {
+      function setNavbarWidth() {
+          const tableWidth = document.getElementById("data-table").offsetWidth;
+          const navbar = document.querySelector(".navbar");
+          navbar.style.width = `${tableWidth}px`;
+      }
+
+      // Call the function initially and whenever the window is resized
+      setNavbarWidth();
+      window.addEventListener("resize", setNavbarWidth);
+  });
+</script>
+
+
+</html>

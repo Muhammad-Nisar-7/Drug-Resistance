@@ -1,0 +1,177 @@
+{% extends "drug_resistant/base.html" %}
+
+
+
+{% block content %}
+<style>
+   #rcorner {
+  margin-left: 22%;
+  border-radius: 25px;
+  border: 2px solid #000000;
+  padding: 20px;
+  width: 600px;
+  height: 350px;
+}
+.fix{
+  width: 100px;
+}
+</style>
+<div class = "my-5 text-center container">
+    <form action="{% url 'drug_resistant:output2' %}" method = 'POST'>{% csrf_token %}
+      <input type="checkbox" id="tf1" name="tf1">
+        <label for="tf" class="aligncenter" style="color: black;">Choose a molecule type:&nbsp;</label>
+
+        <select class = "abc hidden" name="tf" id="tf">
+          <option id = val1 value=select selected="selected">select</option>
+          <option  value=Protein >Protein</option>
+          <option  value=RNA >RNA</option>
+          <option  value=PTM >PTM</option>
+          <option  value=miRNA >miRNA</option>
+          <option  value=lncRNA >lncRNA</option>
+        </select>
+      <div class="justify-content-center" id="rcorner">        
+        <p class="aligncenter" style="color: black;">Please enter the query:</p>
+        <!-- <center><textarea name = "sample" rows="7" cols="40" class="ta"></textarea></center><br> -->
+        <!-- <button type = "submit" class="button1">Submit</button> -->
+        
+        <div class="justify-content-center">
+            <textarea id="doseInput" name="sample" rows="5" cols="45" required></textarea> 
+        
+        </div>
+      
+        <!-- <table class="table table-borderless" style="text-align: start;">
+          <tbody >
+            <br>
+            <tr >
+              <td style="font-size: medium;text-align: start;">
+                <label>Drug Name</label><br>
+                <select class="fix", id="fix1" name="fix1">
+                  <option id = val1 value=select selected="selected">select</option>
+                  {% for i in dname %}
+                  {% for key,value in i.items %}
+                  <option style="color: black;" value={{value}} >{{value}}</option>
+                  {% endfor %}
+                  {% endfor %}
+                </select>
+              </td>
+              
+              <td style="font-size: medium;text-align: end;">
+                <label>Cell lines</label><br>
+                <select class="fix" id="fix2" name="fix2">
+                  <option id = val2 value=select selected="selected">select</option>
+                  {% for i in cline %}
+                  {% for key,value in i.items %}
+                  <option style="color: black;" value={{value}} >{{value}}</option>
+                  {% endfor %}
+                  {% endfor %}
+                </select>
+              </td>
+              
+              </tr>
+               -->
+              <!-- <td style="font-size: medium;text-align: start;"><input type="radio" name="R" id="r1" value="pmid" checked="checked">PubMed ID </td>
+              <td style="font-size: medium;text-align: start;"><input type="button" id="pmid" value="Example" class=""></td>
+              <td style="font-size: medium;text-align: start;"><input type="radio" name="R" id="r2" value="clo">Cell Line Origin</td>
+              <td style="font-size: medium;text-align: start;"><input type="button" id="clo" value="Example" class="hidden"> </td>
+            </tr>
+            <tr>
+              <td style="font-size: medium;text-align: start;"><input type="radio" name="R" id="r3" value="ccl">Control Cell Line </td>
+              <td style="font-size: medium;text-align: start;"><input type="button" id="ccl" value="Example" class="hidden"></td>
+              <td style="font-size: medium;text-align: start;"><input type="radio" name="R" id="r4" value="gid">Gene ID </td>
+              <td style="font-size: medium;text-align: start;"><input type="button" id="gid" value="Example" class="hidden"></td>
+            </tr>
+            <tr>
+              <td style="font-size: medium;text-align: start;"><input type="radio" name="R" id="r5" value="dru">Drugs </td>
+              <td style="font-size: medium;text-align: start;"><input type="button" id="dru" value="Example" class="hidden"></td> -->
+              <!-- <td style="font-size: medium;text-align: start;"><input type="radio" name="R" id="r6" value="mol">Molecules</td>
+              <td style="font-size: medium;text-align: start;">
+                <select class = "hidden" value="Example" name="mol" id="mol">
+                    <option id = val1 value=select selected="selected">protein</option>
+                    <option id = val1 value=select selected="selected">RNA</option>
+                    <option id = val1 value=select selected="selected">PTM</option>
+                    <option id = val1 value=select selected="selected">miRNA</option>
+                    <option id = val1 value=select selected="selected">lncRNA</option>
+                </select>
+              </td> -->
+            <!-- </tr> -->
+          <!-- </tbody>
+        </table> -->
+        
+    
+
+
+             
+        <div class=" d-flex justify-content-center">
+
+          &nbsp;&nbsp;&nbsp;&nbsp;<input  class="btn btn-danger btn-lg mt-4 mr-4" type="button" id="example" value="Example">
+
+          <input  class="btn btn-info btn-lg mt-4" type="submit" >
+        </div>
+</div>
+
+
+    </form>
+</div>
+    
+    <script type="text/javascript">
+        const name = document.querySelector("#tf")
+        const ex =document.getElementById('tf1')
+        const a = document.getElementById('val1')
+        // ex.addEventListener("click", function(){
+
+        //     name.classList.remove("hidden")
+       
+            
+        // })
+
+        var checkbox = document.getElementById("tf1");
+        var sel = document.getElementById('tf');
+        
+
+            checkbox.addEventListener('change', function() {
+            if (this.checked) {
+                name.classList.toggle("hidden")
+
+            }
+            if(this.checked==false){
+               
+
+                name.classList.toggle("hidden")
+                sel.value='select'
+            }
+            // } if(!this.checked){
+            //     name.classList.remove("hidden")
+            //     ex.value = 'select';
+                
+                
+
+            // }
+            })
+//         $("#tf").on("change", function(){
+//     var val = $(this).val();
+//     // save to local
+//     if(window.localStorage){
+//         window.localStorage.setItem("#val1-val", val);
+//     }
+// });
+        
+    </script>
+   
+   <script type="text/javascript">
+        
+    const textArea = document.getElementById("doseInput");
+    document.querySelector('#example').addEventListener('click', function() {
+    textArea.value = `BAX
+PARP1
+LCN2
+RPS3
+RELA
+TGFB1
+TGFB2
+AKT1
+SOD1`
+    });
+    </script>
+
+{% endblock %}
+    

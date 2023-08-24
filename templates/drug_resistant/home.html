@@ -1,0 +1,134 @@
+{% extends "drug_resistant/base.html" %}
+
+
+
+{% block content %}
+<style>
+    .hidden{
+        display: none;
+    }
+    .row {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+</style>
+<div class = "my-5 text-center container">
+    <form action="{% url 'drug_resistant:output' %}" method = 'POST'>{% csrf_token %}
+        
+         <!-- <label for="exp" class="aligncenter" style="color: black;">Choose expression:&nbsp;</label>
+
+        <select  name="exp" id="exp">
+            <option id = val1 value=select selected="selected">select</option>
+            {% for i in exp %}
+            <option value={{i.expression}}>{{i.expression}}</option>
+            {% endfor %}
+        </select>  -->
+        <div class="row">
+        <div>
+        <p class="aligncenter" style="color: black;">Please enter overexpressed genes samples:</p>
+        
+        
+        <div>
+            <textarea id="doseInput" name="sample1" rows="15" cols="60" ></textarea>
+        </div>
+    </div>
+    <div>
+        <p class="aligncenter" style="color: black;">Please enter downregulated genes samples:</p>
+        
+        
+        <div>
+            <textarea id="doseInput2" name="sample2" rows="15" cols="60" ></textarea>
+        </div>
+    </div>
+</div><br>
+
+             
+        <div class=" d-flex justify-content-center">
+
+            <input  class="btn btn-danger btn-lg mt-4 mr-4" type="button" id="example" value="Example">
+
+            <input  class="btn btn-info btn-lg mt-4" type="submit" >
+        </div>
+
+
+    </form>
+</div>
+    
+    <script type="text/javascript">
+        const name = document.querySelector("#tf")
+        const ex =document.getElementById('tf1')
+        const a = document.getElementById('val1')
+        // ex.addEventListener("click", function(){
+
+        //     name.classList.remove("hidden")
+       
+            
+        // })
+
+        // var checkbox = document.getElementById("tf1");
+        // var sel = document.getElementById('tf');
+        
+
+        //     checkbox.addEventListener('change', function() {
+        //     if (this.checked) {
+        //         name.classList.toggle("hidden")
+
+        //     }
+        //     if(this.checked==false){
+               
+
+        //         name.classList.toggle("hidden")
+        //         sel.value='select'
+        //     }
+        //     // } if(!this.checked){
+        //     //     name.classList.remove("hidden")
+        //     //     ex.value = 'select';
+                
+                
+
+        //     // }
+        //     })
+//         $("#tf").on("change", function(){
+//     var val = $(this).val();
+//     // save to local
+//     if(window.localStorage){
+//         window.localStorage.setItem("#val1-val", val);
+//     }
+// });
+        
+    </script>
+    <script type="text/javascript">
+        
+        const textArea = document.getElementById("doseInput");
+        document.querySelector('#example').addEventListener('click', function() {
+        textArea.value = `ATF2
+ATF3
+BCLAF1
+BRCA1
+CBX2
+CEBPB
+CHD4
+CREB1
+CTBP2`
+        });
+
+        const textArea1 = document.getElementById("doseInput2");
+        document.querySelector('#example').addEventListener('click', function() {
+        textArea1.value = `DKK3
+DKK3
+DKK3
+DKK3
+WWTR1
+TP63
+ASS1
+KLF4
+IGFBP7
+TPT1`
+        });
+        </script>
+
+{% endblock %}
+
+
+

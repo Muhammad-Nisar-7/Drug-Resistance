@@ -1,0 +1,71 @@
+{% extends "drug_resistant/base.html" %}
+
+{% block content %}
+<style>
+    .container {
+        /* max-width: 800px; */
+        /* padding: 20px; */
+        border: 1px solid #ffffff; /* Grey border */
+        background-color: #ffffff; /* White background */
+        /* Display as an inline-block to have the buttons next to it */
+        /* margin-top: 50px; */
+        /* margin-left: 10px; */
+    }
+
+    .info-box {
+        color: #333333; /* Dark text color */
+        line-height: 1.6;
+    }
+
+    h2 {
+        color: #0066cc;
+        font-size: 5em; /* Blue heading color */
+    }
+    p{
+        font-size: 18px;
+        text-align: justify;
+    }
+
+    /* Add other custom styles for your webpage here if needed */
+
+    /* Buttons styles */
+   
+
+    .button {
+    display: block;
+    margin-bottom: 45px;
+    padding: 18px 23px;
+    background-color: transparent; /* Set the background to transparent */
+    color: #0066cc; /* Set the text color to the desired color */
+    text-decoration: none;
+    border: 2px solid #00cc00; /* Add a green border with the desired width and color */
+    border-radius: 5px;
+    text-align: center;
+}
+body{
+    overflow: hidden;
+}
+</style>
+<!-- <h3>About</h3> -->
+
+<div class="row d-flex justify-content-center" style="overflow-x: hidden;">
+    <div class="col col-xl-6 col-lg-6 d-flex justify-content-center">
+<div class="container">
+    <div class="mt-4 info-box">
+        <h2>HNCDrugResDb</h2>
+        <p>
+            HNCDrugResDb is a freely accessible database of molecular expression level alterations in proteins, multiple post-translational modifications, mRNAs, long non-coding RNAs and microRNAs associated with drug resistance in Head and Neck Cancers (HNC).  Currently, the database encompasses differential regulation events of over 661 proteins, 166 PTMs, 1121 mRNAs, 203 microRNAs and 49 lncRNAs in response to 14 anti-cancer drugs in 58 different HNC cell lines. HNCDrugResDb is user-friendly to browse information through the selection of drug name, cancer type or molecule type that directs to further details in the context of experimental methods, cell lines, expression pattern and also to their potential biomarker type. All the information is linked to their corresponding research article for further reference. A “Drug Resistance Analysis” module is enabled in HNCDrugResDb for researchers/clinicians to query RNA/proteins quantified/differentially regulated in their subjective HNC tissue/cell line samples to predict the likelihood of drug resistance. The Batch Query interface allow the users to input proteins/RNAs/miRNAs/lncRNAs of interest to retrieve their enrichment in HNCDrugResDb dataset. In addition, HNCDrugResDb also hosts the extensively annotated signaling events associated with HNC drug resistance to various drugs.        </p>
+        <!-- <p>
+            Using the Batch Query option, users can check the gene, protein, miRNA, lncRNA of interest in the context of drug resistance to identify their expression pattern, post-translational modification, drugs involved, expression in cancer types and cell lines, experimental methods used, and corresponding publications. The database also enables the visualization of pathways associated with genes, proteins, miRNAs, and lncRNAs involved in drug resistance through providing a link to manually curated global signaling map of drug resistance.
+        </p> -->
+    </div>
+</div></div>
+<div class="mt-5 col col-xl-5 col-lg-5 d-flex justify-content-center">
+<div class="mt-5 pt-5 buttons-container">
+    <!-- Add your button links here -->
+    <a class="button" href="{% url 'drug_resistant:bin' %}">Browse</a>
+    <a class="button" href="{% url 'drug_resistant:home' %}">Drug Resistance Analysis</a>
+    <a class="button" href="{% url 'drug_resistant:home2' %}">Batch Query</a>
+    <a class="button" href="{% url 'drug_resistant:pw' %}">Pathway Explorer</a>
+</div></div></div>
+{% endblock %}

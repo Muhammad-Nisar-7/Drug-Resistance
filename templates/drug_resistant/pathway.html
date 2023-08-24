@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data </title>
+
+    <style>
+
+:root {
+  --primary-light: #8abdff;
+  --primary: #9795a8;
+  --primary-dark: #5b0eeb;
+  --white: #ffffff;
+  --greyLight-1: #e4ebf5;
+  --greyLight-2: #c8d0e7;
+  --greyLight-3: #bec8e4;
+  --greyDark: #9baacf;
+}
+        .btsn {
+  cursor: pointer;
+  border: #fff;
+  background-color: transparent;
+  color: #6d5dfc;
+  font-size: 1.5em;
+
+  
+}
+.btsn:hover{
+color: #ff0f1f;
+}
+
+       table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        border: 1px solid #dddddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    .hidden{
+        display: none;
+    }
+    @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+    .btn__primary {
+grid-column: 1/2;
+grid-row: 4/5;
+background: var(--primary);
+box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-light), inset -0.2rem -0.2rem 1rem var(--primary-dark), 0.3rem 0.3rem 0.6rem var(--greyLight-2), -0.2rem -0.2rem 0.5rem var(--white);
+color: var(--greyLight-1);
+}
+.btn__primary:hover {
+color: var(--white);
+}
+.btn__primary:active {
+box-shadow: inset 0.2rem 0.2rem 1rem var(--primary-dark), inset -0.2rem -0.2rem 1rem var(--primary-light);
+}
+.btn {
+            width: 250px; /* Adjust the width as needed */
+            height: 50px; /* Adjust the height as needed */
+        }
+
+    </style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cytoscape/3.23.0/cytoscape.min.js" integrity="sha512-gEWKnYYa1/1c3jOuT9PR7NxiVI1bwn02DeJGsl+lMVQ1fWMNvtjkjxIApTdbJ/wcDjQmbf+McWahXwipdC9bGA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="/static/lncrna/styles.css" rel="stylesheet"/>
+</head>
+
+<body >
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<a class="navbar-brand" href="{% url 'drug_resistant:profile' %}"> <h1>HNCDrugResDb</h1></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
+
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'drug_resistant:home0' %}">HOME </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'drug_resistant:bin' %}">BROWSE </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'drug_resistant:home2' %}">BATCH QUERY</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'drug_resistant:qsearch' %}">QUICK SEARCH </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{% url 'drug_resistant:home' %}">ANALYZE </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'drug_resistant:pw' %}">PATHWAY EXPLORER </a>
+      </li>
+      
+    
+    <li class="nav-item">
+      <a class="nav-link " href="{% url 'drug_resistant:faqs' %}" >FAQs</a>
+    </li>
+        <li class="nav-item">
+      <a class="nav-link " href="{% url 'drug_resistant:contact' %}" >Contact Us</a>
+    </li>
+
+  </ul>
+  
+</div>
+</nav>
+<div class="mt-4 container justify-content-center hidden  animate__animated animate__backInUp" id="hiddenDiv" style="border: 1px solid black;height: 70vh;">
+   <div class="row d-flex justify-content-end"> <button class="btsn" id="close-diff"> <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+    </svg></button></div>
+<div class="container hidden diffanalysis" id="diffex1" style="overflow: scroll;height: 64vh;"><img src="/media/drugres/Cisplatin_27012023 (1).svg" id="diffex1"></div>
+<div class="container hidden diffanalysis" id="diffex2" style="overflow: scroll;height: 64vh;"><img src="/media/drugres/Vincristine_28012023.svg" id="diffex2"></div>
+<div class="container hidden diffanalysis" id="diffex3" style="overflow: scroll;height: 64vh;"><img src="/media/drugres/Cetuximab_27072023.svg" id="diffex3"></div>
+<div class="container hidden diffanalysis" id="diffex4" style="overflow: scroll;height: 64vh;"><img src="/media/drugres/Trametinib_28012023.svg" id="diffex4"></div>
+<div class="container hidden diffanalysis" id="diffex5" style="overflow: scroll;height: 64vh;"><img src="/media/drugres/Apatinib_27072023.svg" id="diffex5"></div>
+<div class="container hidden diffanalysis" id="diffex6" style="overflow: scroll;height: 64vh;"><img src="/media/drugres/Paclitaxel_28012023.svg" id="diffex6"></div>
+<div class="container hidden diffanalysis" id="diffex7" style="overflow: scroll;height: 64vh;"><img src="/media/drugres/Bleomycin_27012023.svg" id="diffex7"></div>
+<div class="container hidden diffanalysis" id="diffex8" style="overflow: scroll;height: 64vh;"><img src="/media/drugres/Pingyangmycin_28012023.svg" id="diffex8"></div>
+<div class="container hidden diffanalysis" id="diffe9" style="overflow: scroll;height: 64vh;"><img src="/media/drugres/Gemcitabine_27072023.gpml.svg" id="diffex9"></div>
+<div class="container hidden diffanalysis" id="diffex10" style="overflow: scroll;height: 64vh;"><img src="/media/drugres/5-fluorouracil _28012023.svg" id="diffex10"></div>
+<div class="container hidden diffanalysis" id="diffex11" style="overflow: scroll;height: 64vh;"><img src="/media/drugres/Docetaxel_27072023.svg" id="diffex11"></div>
+<div class="container hidden diffanalysis" id="diffex12" style="overflow: scroll;height: 64vh;"><img src="/media/drugres/Dasatinib_27072023.svg" id="diffex12"></div>
+</div>
+<div id="bdiv" style="text-align: center;" >
+    <button class="mt-1 btn btn-success btn-lg" onclick="test1()" >Cisplatin</button>
+    <button class="mt-1 btn btn-success btn-lg" onclick="test2()" >Vincristine</button>
+    <br>
+    <button class="mt-1 btn btn-success btn-lg" onclick="test3()" >Cetuximab</button>
+    <button class="mt-1 btn btn-success btn-lg" onclick="test4()" >Trametinib</button>
+    <br>
+    <button class="mt-1 btn btn-success btn-lg" onclick="test5()" >Apatinib</button>
+    <button class="mt-1 btn btn-success btn-lg" onclick="test6()" >Paclitaxel</button>
+    <br>
+    <button class="mt-1 btn btn-success btn-lg" onclick="test7()" >Bleomycin</button>
+    <button class="mt-1 btn btn-success btn-lg" onclick="test8()" >Pingyangmycin</button>
+    <br>
+    <button class="mt-1 btn btn-success btn-lg" onclick="test9()" >Gemcitabine</button>
+    <button class="mt-1 btn btn-success btn-lg" onclick="test10()" >5-fluorouracil</button>
+    <br>
+    <button class="mt-1 btn btn-success btn-lg" onclick="test11()" >Docetaxel</button>
+    <button class="mt-1 btn btn-success btn-lg" onclick="test12()" >Dasatinib</button>
+</div>
+
+</body>
+
+<script>
+    const diffex1 = document.getElementById('diffex1');
+    const hiddenDiv = document.getElementById('hiddenDiv');
+    const bdiv = document.getElementById('bdiv');
+    function test1(){
+//   back.style.opacity=0.024;
+        diffex1.classList.remove('hidden');
+        bdiv.classList.add('hidden');
+        diffex1.style.opacity=1;
+        hiddenDiv.classList.remove('hidden');
+      }
+
+const closeDiffBtn = document.getElementById("close-diff");
+closeDiffBtn.addEventListener('click',function(){
+  hiddenDiv.classList.add("hidden");
+  bdiv.classList.remove('hidden');
+  location.reload()
+  back.style.opacity=1;
+})
+
+const diffex2 = document.getElementById('diffex2');
+    function test2(){
+//   back.style.opacity=0.024;
+  diffex2.classList.remove('hidden');
+  diffex2.style.opacity=1;
+  hiddenDiv.classList.remove('hidden');
+  bdiv.classList.add('hidden');
+}
+
+// const closeDiffBtn2 = document.getElementById("close-diff2");
+// closeDiffBtn2.addEventListener('click',function(){
+//   diffex2.classList.add("hidden");
+// //   back.style.opacity=1;
+// })
+
+const diffex3 = document.getElementById('diffex3');
+    function test3(){
+//   back.style.opacity=0.024;
+  diffex3.classList.remove('hidden');
+  diffex3.style.opacity=1;
+  hiddenDiv.classList.remove('hidden');
+  bdiv.classList.add('hidden');
+}
+
+// const closeDiffBtn3 = document.getElementById("close-diff3");
+// closeDiffBtn3.addEventListener('click',function(){
+//   diffex3.classList.add("hidden");
+// //   back.style.opacity=1;
+// })
+  
+const diffex4 = document.getElementById('diffex4');
+    function test4(){
+//   back.style.opacity=0.024;
+  diffex4.classList.remove('hidden');
+  diffex4.style.opacity=1;
+  hiddenDiv.classList.remove('hidden');
+  bdiv.classList.add('hidden');
+}
+
+// const closeDiffBtn4 = document.getElementById("close-diff4");
+// closeDiffBtn4.addEventListener('click',function(){
+//   diffex4.classList.add("hidden");
+// //   back.style.opacity=1;
+// })
+
+const diffex5 = document.getElementById('diffex5');
+    function test5(){
+//   back.style.opacity=0.024;
+  diffex5.classList.remove('hidden');
+  diffex5.style.opacity=1;
+  hiddenDiv.classList.remove('hidden');
+  bdiv.classList.add('hidden');
+}
+
+// const closeDiffBtn5 = document.getElementById("close-diff5");
+// closeDiffBtn5.addEventListener('click',function(){
+//   diffex5.classList.add("hidden");
+// //   back.style.opacity=1;
+// })
+
+const diffex6 = document.getElementById('diffex6');
+    function test6(){
+//   back.style.opacity=0.024;
+  diffex6.classList.remove('hidden');
+  diffex6.style.opacity=1;
+  hiddenDiv.classList.remove('hidden');
+  bdiv.classList.add('hidden');
+}
+
+// const closeDiffBtn6 = document.getElementById("close-diff6");
+// closeDiffBtn6.addEventListener('click',function(){
+//   diffex6.classList.add("hidden");
+// //   back.style.opacity=1;
+// })
+
+const diffex7 = document.getElementById('diffex7');
+    function test7(){
+//   back.style.opacity=0.024;
+  diffex7.classList.remove('hidden');
+  diffex7.style.opacity=1;
+  hiddenDiv.classList.remove('hidden');
+  bdiv.classList.add('hidden');
+}
+
+// const closeDiffBtn7 = document.getElementById("close-diff7");
+// closeDiffBtn7.addEventListener('click',function(){
+//   diffex7.classList.add("hidden");
+// //   back.style.opacity=1;
+// })
+
+const diffex8 = document.getElementById('diffex8');
+    function test8(){
+//   back.style.opacity=0.024;
+  diffex8.classList.remove('hidden');
+  diffex8.style.opacity=1;
+  hiddenDiv.classList.remove('hidden');
+  bdiv.classList.add('hidden');
+}
+
+// const closeDiffBtn8 = document.getElementById("close-diff8");
+// closeDiffBtn8.addEventListener('click',function(){
+//   diffex8.classList.add("hidden");
+// //   back.style.opacity=1;
+// })
+
+const diffex9 = document.getElementById('diffex9');
+    function test9(){
+//   back.style.opacity=0.024;
+  diffex9.classList.remove('hidden');
+  diffex9.style.opacity=1;
+  hiddenDiv.classList.remove('hidden');
+  bdiv.classList.add('hidden');
+}
+
+// const closeDiffBtn9 = document.getElementById("close-diff9");
+// closeDiffBtn9.addEventListener('click',function(){
+//   diffex9.classList.add("hidden");
+// //   back.style.opacity=1;
+// })
+  
+const diffex10 = document.getElementById('diffex10');
+    function test10(){
+//   back.style.opacity=0.024;
+  diffex10.classList.remove('hidden');
+  diffex10.style.opacity=1;
+  hiddenDiv.classList.remove('hidden');
+  bdiv.classList.add('hidden');
+}
+
+// const closeDiffBtn10 = document.getElementById("close-diff10");
+// closeDiffBtn10.addEventListener('click',function(){
+//   diffex10.classList.add("hidden");
+// //   back.style.opacity=1;
+// })
+
+const diffex11 = document.getElementById('diffex11');
+    function test11(){
+//   back.style.opacity=0.024;
+  diffex11.classList.remove('hidden');
+  diffex11.style.opacity=1;
+  hiddenDiv.classList.remove('hidden');
+  bdiv.classList.add('hidden');
+}
+
+// const closeDiffBtn11 = document.getElementById("close-diff11");
+// closeDiffBtn11.addEventListener('click',function(){
+//   diffex11.classList.add("hidden");
+// //   back.style.opacity=1;
+// })
+
+const diffex12 = document.getElementById('diffex12');
+    function test12(){
+//   back.style.opacity=0.024;
+  diffex12.classList.remove('hidden');
+  diffex12.style.opacity=1;
+  hiddenDiv.classList.remove('hidden');
+  bdiv.classList.add('hidden');
+}
+
+// const closeDiffBtn12 = document.getElementById("close-diff12");
+// closeDiffBtn12.addEventListener('click',function(){
+//   diffex12.classList.add("hidden");
+// //   back.style.opacity=1;
+// })
+
+
+//   window.addEventListener("DOMContentLoaded", function() {
+//       function setNavbarWidth() {
+//           const tableWidth = document.getElementById("data-table").offsetWidth;
+//           const navbar = document.querySelector(".navbar");
+//           navbar.style.width = `${tableWidth}px`;
+//       }
+
+//       // Call the function initially and whenever the window is resized
+//       setNavbarWidth();
+//       window.addEventListener("resize", setNavbarWidth);
+//   });
+</script>
+
+
+
+</html>

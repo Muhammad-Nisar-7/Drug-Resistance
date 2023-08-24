@@ -1,0 +1,102 @@
+{% extends "drug_resistant/base.html" %}
+
+
+
+{% block content %}
+<style>
+   #rcorner {
+  margin-left: 18%;
+  border-radius: 25px;
+  border: 2px solid #000000;
+  padding: 20px;
+  width: 800px;
+  height: 500px;
+}
+#lcorner {
+  margin-left: 8%;
+  border-radius: 15px;
+  border: 2px solid #000000;
+  padding: 8px;
+  width: 100px;
+  height: 80px;
+}
+span{
+  font-size: large;
+}
+</style>
+<div class = "my-5 text-center container">
+    <form action="{% url 'drug_resistant:qoutput' %}" method = 'POST'>{% csrf_token %}
+     
+      <div class="justify-content-center" id="rcorner">        
+        <p class="aligncenter" style="color: black;">Query :<br><span>please enter a keyword</span></p>
+        <input type="text" name = "t1" id = "t1" required>
+        <!-- <center><textarea name = "sample" rows="7" cols="40" class="ta"></textarea></center><br> -->
+        <!-- <button type = "submit" class="button1">Submit</button> -->
+        
+      
+        <table class="table table-borderless" style="text-align: start;">
+          <tbody >
+            <br>
+            <tr>
+              <td></td>
+            </tr>
+            <tr >
+              <td style="font-size: medium;text-align: start;"><input type="checkbox"  id="c1" value="cell_lo" name = 'checkboxes' >Cancer type</td>
+              <td style="font-size: medium;text-align: start;"><input type="checkbox" id="c2" value="control_cl" name = 'checkboxes'>Cell line</td>
+              <td style="font-size: medium;text-align: start;"><input type="checkbox"  id="c3" value="exp_inRes_cell" name = 'checkboxes'>Expression in resistant cell</td>
+              <td style="font-size: medium;text-align: start;"><input type="checkbox" id="c4" value="exp_method" name = 'checkboxes'>Experimental method</td>
+            </tr>
+            <tr><td></td></tr>
+            <tr>
+              <td style="font-size: medium;text-align: start;"><input type="checkbox"  id="c5" value="drug" name = 'checkboxes'>Drug Name</td>
+              <td style="font-size: medium;text-align: start;"><input type="checkbox" id="c6" value="driver_molecule" name = 'checkboxes'>Driver molecule</td>
+              <td style="font-size: medium;text-align: start;"><input type="checkbox"  id="c7" value="post_tm" name = 'checkboxes'>Post-translational modification(s)</td>
+              <td style="font-size: medium;text-align: start;"><input type="checkbox" id="c8" value="fold_ratio" name = 'checkboxes' >Fold change/Ratio</td>
+            </tr>
+            <tr>
+              <td></td>
+            </tr>
+            <tr>
+              <td style="font-size: medium;text-align: start;"><input type="checkbox"  id="c9" value="biomarker_type" name = 'checkboxes'>Biomarker type</td>
+              <td style="font-size: medium;text-align: start;"><input type="checkbox" id="c10" value="pmid_marker" name = 'checkboxes'>PMID Biomarker</td>
+              <td style="font-size: medium;text-align: start;"><input type="checkbox" id="master" value="select_all" name = 'checkboxes'>select all</td>
+
+            </tr>
+          </tbody>
+        </table>
+        
+    
+
+
+             
+        <div class=" d-flex justify-content-center">
+
+            <input  class="btn btn-danger btn-lg mt-4 mr-4" type="reset" id="reset" value="Reset">
+
+            <input  class="btn btn-info btn-lg mt-4" type="submit" >
+        </div>
+</div>
+
+
+    </form>
+</div>
+
+<script>
+// get all checkboxes
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+// get the master checkbox (the one that controls all others)
+const masterCheckbox = document.getElementById('master');
+
+// add an event listener to the master checkbox
+masterCheckbox.addEventListener('click', function() {
+  // set the state of all checkboxes to match the master checkbox
+  checkboxes.forEach(function(checkbox) {
+    checkbox.checked = masterCheckbox.checked;
+  });
+});
+</script>
+
+
+{% endblock %}
+    

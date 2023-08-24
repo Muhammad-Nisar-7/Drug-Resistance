@@ -1,0 +1,76 @@
+{% extends "drug_resistant/base.html" %}
+
+{% block content %}
+<style>
+    .container {
+        max-width:90em;
+        /* padding: 20px; */
+        border: 1px solid #ffffff; /* Grey border */
+        background-color: #ffffff; /* White background */
+        /* Display as an inline-block to have the buttons next to it */
+        /* margin-top: 50px; */
+        margin-left: 30px;
+        margin-right: 30px;
+    }
+
+    .info-box {
+        color: #333333; /* Dark text color */
+        line-height: 1.6;
+    }
+
+    h2 {
+        color: #0066cc;
+        font-size: 4em; /* Blue heading color */
+    }
+    p{
+        font-size: 18px;
+        text-align: justify;
+    }
+
+    /* Add other custom styles for your webpage here if needed */
+
+    /* Buttons styles */
+   
+
+  
+body{
+    overflow-x: hidden;
+}
+</style>
+<!-- <h3>About</h3> -->
+
+<div class="row d-flex justify-content-center" style="overflow-x: hidden;">
+    <!-- <div class="col col-xl-6 col-lg-6 d-flex justify-content-center"> -->
+<div class="container">
+    <!-- <div class="mt-4 info-box"> -->
+        <h2>FAQS</h2>
+        <p>
+            <b>1.  What is HNCDrugResDb?</b>
+        </p>
+        <p>
+            HNCDrugResDb is recourse of manually curated data on differentially expressed RNAs, proteins, miRNAs and lncRNAs from publicly available research articles related to Head and neck cancer drug resistance. It includes data from 58 HNC cell line resistant to 14 anti-cancer drugs.
+        </p>
+        <p>
+            <b>2. Why HNCDrugResDb?</b>
+        </p>
+        <p>
+            Head and neck cancer is the seventh most common type of cancer worldwide, which can arise at various part of upper aerodigestive tract.  Despite effective treatment modalities many of the patients develop resistance to treatment after an initial response, which is a major obstacle in the success of cancer therapy. Cancer cells adapt various mechanisms to overcome the cytotoxic effect of drugs, through altering the expression of genes, proteins and also activating alternative pathways. In recent years, many studies have shown that miRNA and lncRNA play a crucial role in drug resistance by targeting genes involved in drug resistance. In order to tackle the drug resistance, it is important to understand the underlying molecular alterations and pathways involved in drug resistance. Hence, we compiled all altered molecules involved in HNC drug resistance upon treatment with front line anti-cancer drugs, which include both driver and differentially expressed molecule in drug resistance. 
+        </p>
+        <p>
+            <b>3. How to search the data?</b>
+        </p>
+        <p>
+            We provide a  user-friendly Browse and Batch Query option for fetching data from HNCDrugResDb. Data can be retrieved from Browse interface through selecting drug name, cancer type or molecule type. Batch Query interface require the input of list of RNAs (Provide Gene ID/Gene Symbol), proteins (Provide Gene ID/Gene Symbol), miRNAs (miRBase accession), lncRNAs (Provide Gene ID/Gene Symbol).
+        </p>
+        <p>
+            <b>4. How to download the HNC Drug Resistance DB data?</b>
+        </p>
+        <p>
+            The data curated in HNC Drug Resistance DB can be searched in batches in Batch Query    
+    option. Please Contact Us if you want to access all the data at a time.
+
+        </p>
+    </div></div>
+<!-- </div></div> -->
+
+{% endblock %}
